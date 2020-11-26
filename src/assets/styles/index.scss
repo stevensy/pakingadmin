@@ -1,0 +1,302 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+
+body {
+  height: 100%;
+  background: rgba(243,246,251,1);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+aside {
+  background: #eef1f6;
+  padding: 8px 24px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+.wrap {
+  h2 {
+    font-size: 16px;
+    color:#212121;
+    border-left: 4px solid #46A0FC;
+    padding-left: 10px;
+    margin-top: 0;
+    font-weight: normal;
+  }
+  .aside_wrap {
+    width: 100%;
+    padding-left:10px;
+    margin-top: 20px;
+  }
+  .aside {
+    background: #fff;
+    padding: 15px 0;
+    min-width:230px;
+    height: calc( 100vh - 100px);
+    overflow:hidden;
+  }
+  .txt_right {
+    text-align: right;
+    padding-right: 20px;
+  }
+  .edit_txt {
+    color:#46A0FC;
+    margin-right: 30px;
+    cursor: pointer;
+  }
+  .del_txt{
+    color: #808080;
+    cursor: pointer;
+  }
+  .search_wrap {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+  }
+  .section{
+    border-radius: 5px;
+    background: #fff;
+    padding-bottom: 15px;
+    overflow: hidden;
+    .btns_right{
+      text-align: right
+    }
+  }
+}
+.el-dialog__header {
+  padding-left: 0;
+  .el-dialog__title {
+    color: #212121;
+    border-left: 4px solid #46A0FC;
+    padding-left: 10px;
+  }
+}
+.el-dialog__body {
+  padding:10px 20px 5px;
+  max-height: 450px;
+  overflow: auto
+}
+.pagination {
+  text-align:center;
+  margin-top: 20px;
+}
+.danger,.danger:hover {
+  color: #F56C6C
+}
+.ztree li span.button.hiddenView {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADLElEQVRYR+1WTWhcZRQ9d4Yos24qKDZYoV10YZWuVJAuCkot3UUoIa3pu29CLGOhVtLSqgkB0VIRGs2k892PwSoiupKCFRV0qdSRWrDtyrqJm8SlhErnnfKNM8NkmvdmmlKyyYNv89695xzO/fmeYJ0fWWd+bAjYcOCBO6CqX5Jc9N4fWa3hH6iAQA5gmOQr3vuv7ktAFEXPA2gcEdlCclBENgH4F8AfJK+JyO8AamZW6yA/4L3/Im3cezqgqkUA4ey6151BcsR7/3lWXqqAKIqGRWQyg3hJRBZIBoxtAApdRKNm9pmqvkXyRt8lKJVKDy8vL5cBjKUp766pqj5O8qiIvA7gIQCHzOyCqr4B4GzAIfm+9/5EN+YKB4rF4mCSJJ8A2JtGbmaNnGaNXyC5DOAnEXkaQDiHzayqqhMA5rpwLuZyucOVSmWp9b4tYGxs7Ml8Pv8pgOcyanbczD5QVabEqJn5OI5HSV5IiakBCOW5Hr63Bajqrz0abdHMHomi6GsR2X+XlSJF55xrupMmsJEmIt85515sC4jj+DWSH2d2q8hvzrldqroA4LHOWBGZcM7NR1E07r0/r6phHJ/qMTUNN1v1fBPAmR4JV81sZxRFN0XkiXYNRY445+YCuYjMhx6J4/gKyZ098KbNbKpdgjiOvye5JyMpNNt2kjMi8mqzs0ve+49a5AC+MbOXVXURwGAG1hUze2ZFDzRrdwnASxnjd7ZZ/+0AjprZuQ7y20mSPCsiW0UkrOC05+eBgYGRcrn8510CmiKmALyTkv1fmHOSx7z3H7bISV7K5/PTlUrll4wJCZDf1uv1g9VqNTj0f0OuRqSqQcRpAPlVvjeap/t959JJEV8tFAoTs7Ozt1Y0cJpP4+PjO+r1eiBql4TkpPf+TBzH+0heBHBVRG6T3AJgcwpWrbkF13Ybtm41ACfN7D1V3Q3gxx4dHj6HhVMxs0pWbOZt2EF+yszeVdVwI0YiMkRyCEA4AyT/EZGwXv8i+UMul7vsnLvch8j0v+IO8rfNbKYfsLXErOpAsVh8NEmSvwFMmdn0WoD7zen5Q9Iv0FrjNgRsOLDuDtwBCyFgMHdpyuMAAAAASUVORK5CYII=);
+  background-size: 20px;
+  background-repeat: no-repeat;
+}
+.el-tooltip__popper {
+ max-width: 95%;
+ line-height: 1.5;
+}
+.el-form-item__content .el-input-group {
+  vertical-align: middle;
+}
+.setLineH .el-form-item__label {
+  line-height: 22px;
+}
+.el-collapse-item__header {
+  font-size: 16px;
+}
+.el-collapse {
+  border-top: none;
+}
+.limit-input .el-input__count{
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  min-width: 70px;
+  display: inline-block;
+  text-align: right;
+}
+.limit-textarea .el-input__count {
+  bottom: -35px;
+  background: none;
+}
+.editor {
+  height: 242px !important;
+}
+.ql-container {
+  height: calc(100% - 70px) !important;
+}
