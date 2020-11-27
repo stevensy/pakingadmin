@@ -73,9 +73,9 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="日期" prop="date">
+        <el-form-item label="日期" prop="dateRange">
           <el-date-picker
-            v-model="queryParams.date"
+            v-model="queryParams.dateRange"
             style="width: 100%"
             size="mini"
             type="daterange"
@@ -138,7 +138,7 @@ export default {
         status: undefined,
         linkman: undefined,
         linkmanPhone: undefined,
-        date: [new Date(new Date().getFullYear(), new Date().getMonth(), 1).toLocaleDateString().replace(/\//g, '-'), new Date(new Date().getFullYear(), new Date().getMonth()+1, 0).toLocaleDateString().replace(/\//g, '-')]
+        dateRange: [new Date(new Date().getFullYear(), new Date().getMonth(), 1).toLocaleDateString().replace(/\//g, '-'), new Date(new Date().getFullYear(), new Date().getMonth()+1, 0).toLocaleDateString().replace(/\//g, '-')]
       },
       lists: [],
       // 分页

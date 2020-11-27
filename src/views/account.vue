@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="search_wrap">
       <h2>管理员{{ $route.meta.title }}</h2>
-      <el-row class="mb20">
+      <el-row class="mb20" v-if="+auth === 2">
         <el-button
             type="primary"
             icon="el-icon-plus"
@@ -11,7 +11,7 @@
           >添加管理员</el-button>
       </el-row>
       <div class="section">
-        <Table :list-loading="loading" :table-data="lists" :pagination="pagination" @pagingLoadInfo="getList">
+        <Table :list-loading="loading" :table-data="lists" :pagination="+auth===2 ? pagination : false" @pagingLoadInfo="getList">
           <el-table-column label="用户账号" prop="account" :show-overflow-tooltip="true" />
           <el-table-column label="姓名" prop="username" :show-overflow-tooltip="true" />
           <el-table-column label="手机" prop="phone" :show-overflow-tooltip="true" />
@@ -84,17 +84,24 @@
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="密码" prop="password">
-                <el-input v-model.trim="dialog.password" size="mini" maxlength="50" placeholder="请输入密码" />
+              <el-form-item label="职位" prop="position">
+                <el-input v-model.trim="dialog.position" size="mini" maxlength="50" placeholder="请输入职位" />
               </el-form-item>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="12">
+              <el-form-item label="密码" prop="password">
+                <el-input v-model.trim="dialog.password" size="mini" maxlength="50" placeholder="请输入密码" />
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
               <el-form-item label="备注" prop="remark">
                 <el-input v-model.trim="dialog.remark" type="textarea" :autosize="{ minRows: 4 }" size="mini" maxlength="300" placeholder="请输入备注" />
               </el-form-item>
             </el-col>
+          </el-row>
+          <el-row>
             <el-col :span="12">
               <el-form-item label="启用状态" prop="status" label-width="90px">
                 <el-switch
@@ -144,6 +151,7 @@ export default {
         username: undefined,
         company: undefined,
         department: undefined,
+        position: undefined,
         password: '123456',
         remark: undefined,
         status: '1',
@@ -163,7 +171,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'userInfo'
+      'userInfo',
+      'auth'
     ])
   },
   created() {
@@ -181,12 +190,15 @@ export default {
         this.pagination.page = obj.page
       }
       let { pageSize, page } = this.pagination
-      const params = Object.assign({}, { permission: '1', account: this.userInfo && this.userInfo.account, type: '1', pageSize, page })
+      let params = Object.assign({}, { permission: '1', account: this.userInfo && this.userInfo.account, type: '1' })
+      if (+this.auth === 2) {
+        params = Object.assign({}, params, { pageSize, page })
+      }
       getListUser(params).then(res => {
         this.loading = false
         if (res.status) {
-          this.lists = res.list
-          this.pagination.total = res.pagination.total
+          this.lists = res.list || []
+          +this.auth === 2 && (this.pagination.total = res.pagination.total)
         }
       })
     },
