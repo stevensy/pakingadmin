@@ -26,7 +26,7 @@
         <el-form-item label="手机号" prop="linkmanPhone">
           <el-input
             v-model.trim="queryParams.linkmanPhone"
-            placeholder="请输入车牌"
+            placeholder="请输入手机号"
             clearable
             size="mini"
             style="width: 240px"
@@ -144,7 +144,7 @@ export default {
       // 分页
       pagination: {
         total: 0,
-        pageSize: 10,
+        pageSize: 30,
         page: 1
       }
     };
@@ -155,7 +155,7 @@ export default {
   methods: {
     getList(obj) {
       this.loading = true;
-
+      let { pageSize, page } = this.pagination
       if (obj && Object.prototype.hasOwnProperty.call(page, 'pageSize')) {
         this.pagination.pageSize = obj.pageSize
         this.pagination.page = 1
@@ -163,7 +163,7 @@ export default {
       if (page && Object.prototype.hasOwnProperty.call(page, 'page')) {
         this.pagination.page = obj.page
       }
-      let { pageSize, page } = this.pagination
+      
       const params = Object.assign({}, this.queryParams, { pageSize, page })
       bookingList(params).then(res => {
         if (res.status) {

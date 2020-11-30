@@ -139,7 +139,7 @@ export default {
       // 分页
       pagination: {
         total: 0,
-        pageSize: 10,
+        pageSize: 30,
         page: 1
       },
       // 是否显示弹出层
@@ -181,7 +181,7 @@ export default {
   methods: {
     getList(obj) {
       this.loading = true;
-
+      let { pageSize, page } = this.pagination
       if (obj && Object.prototype.hasOwnProperty.call(page, 'pageSize')) {
         this.pagination.pageSize = obj.pageSize
         this.pagination.page = 1
@@ -189,7 +189,6 @@ export default {
       if (obj && Object.prototype.hasOwnProperty.call(page, 'page')) {
         this.pagination.page = obj.page
       }
-      let { pageSize, page } = this.pagination
       let params = Object.assign({}, { permission: '1', account: this.userInfo && this.userInfo.account, type: '1' })
       if (+this.auth === 2) {
         params = Object.assign({}, params, { pageSize, page })
@@ -198,7 +197,9 @@ export default {
         this.loading = false
         if (res.status) {
           this.lists = res.list || []
-          +this.auth === 2 && (this.pagination.total = res.pagination.total)
+          if (+this.auth === 2) {
+            this.pagination.total = res.pagination.total
+          }
         }
       })
     },
