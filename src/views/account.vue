@@ -181,14 +181,14 @@ export default {
   methods: {
     getList(obj) {
       this.loading = true;
-      let { pageSize, page } = this.pagination
-      if (obj && Object.prototype.hasOwnProperty.call(page, 'pageSize')) {
+      if (obj && Object.prototype.hasOwnProperty.call(obj, 'pageSize')) {
         this.pagination.pageSize = obj.pageSize
         this.pagination.page = 1
       }
-      if (obj && Object.prototype.hasOwnProperty.call(page, 'page')) {
+      if (obj && Object.prototype.hasOwnProperty.call(obj, 'page')) {
         this.pagination.page = obj.page
       }
+      let { pageSize, page } = this.pagination
       let params = Object.assign({}, { permission: '1', account: this.userInfo && this.userInfo.account, type: '1' })
       if (+this.auth === 2) {
         params = Object.assign({}, params, { pageSize, page })
@@ -206,7 +206,7 @@ export default {
      /** 搜索按钮操作 */
     handleQuery() {
       this.pagination.page = 1;
-      this.pagination.pageSize = 10
+      this.pagination.pageSize = 30
       this.getList();
     },
     handleNum(str, v) {
