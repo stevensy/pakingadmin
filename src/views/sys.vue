@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="search_wrap">
       <el-tabs v-model="activeName">
-        <el-tab-pane label="公众号接口管理" name="0">
+        <!-- <el-tab-pane label="公众号接口管理" name="0">
           <el-form :model="wxconfig" ref="wxconfig" :rules="wxrules" label-width="100px">
             <el-form-item label="appId" prop="appId">
               <el-input
@@ -26,8 +26,8 @@
               <el-button type="primary" size="mini" @click="bindWX">绑定微信公众号</el-button>
             </el-form-item>
           </el-form>
-        </el-tab-pane>
-        <el-tab-pane label="手机短信接口管理" name="1">
+        </el-tab-pane> -->
+        <el-tab-pane label="手机短信接口管理" name="0">
           <h3 class="limitTip">仅限于阿里大于短信接口</h3>
           <el-form :model="smsconfig" ref="smsconfig" :rules="smsrules" label-width="100px">
             <el-form-item label="accessKeyId" prop="accessKeyId">
@@ -53,7 +53,7 @@
             </el-form-item>
           </el-form>
         </el-tab-pane>
-        <el-tab-pane label="接口管理">
+        <el-tab-pane label="接口管理" name="1">
           <el-form :model="apiconfig" ref="apiconfig" :rules="apirules" label-width="150px">
             <el-form-item label="停车系统域名端口">
               {{ apiconfig.ip }}
@@ -136,7 +136,8 @@ export default {
   },
   watch: {
     activeName(v) {
-      let arr = [ 'wxconfig', 'smsconfig', 'apiconfig' ]
+      // wxconfig
+      let arr = [ 'smsconfig', 'apiconfig' ]
       if (this[arr[v]].id) return
       this.getList(v)
     }
@@ -201,7 +202,8 @@ export default {
       })
     },
     getList(v) {
-      let api = [ getWxconfig, getSmsconfig, getE7 ], arr = [ 'wxconfig', 'smsconfig', 'apiconfig' ];
+      // getWxconfig, wxconfig
+      let api = [ getSmsconfig, getE7 ], arr = [ 'smsconfig', 'apiconfig' ];
       api[v]().then(res => {
         if (res.status) {
           this[arr[v]] = res.data.length && res.data[0] || []
