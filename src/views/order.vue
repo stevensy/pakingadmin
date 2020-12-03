@@ -98,9 +98,9 @@
           <el-table-column label="会员" prop="username" width="80px" :show-overflow-tooltip="true" />
           <el-table-column label="会员账号" width="110px" prop="account" :show-overflow-tooltip="true" />
           <el-table-column label="公司" prop="company" :show-overflow-tooltip="true" />
-          <el-table-column label="车主姓名" width="80px" prop="linkman" :show-overflow-tooltip="true" />
-          <el-table-column label="车主手机" width="110px" prop="linkmanPhone" :show-overflow-tooltip="true" />
-          <el-table-column label="车主车牌" width="100px" prop="license" :show-overflow-tooltip="true" />
+          <el-table-column label="访客姓名" width="80px" prop="linkman" :show-overflow-tooltip="true" />
+          <el-table-column label="访客手机" width="110px" prop="linkmanPhone" :show-overflow-tooltip="true" />
+          <el-table-column label="访客车牌" width="100px" prop="license" :show-overflow-tooltip="true" />
           <el-table-column label="预约进场时间" width="160px" prop="entryTime" :show-overflow-tooltip="true" />
           <el-table-column label="预约离场时间" width="160px" prop="leaveTime" :show-overflow-tooltip="true" />
           <el-table-column label="实际进场时间" width="160px" prop="inTime" :show-overflow-tooltip="true" />
@@ -126,6 +126,7 @@ export default {
   name: 'Member',
   components: { Table, Dialog },
   data() {
+    let _this = this
     return {
       loading: true,
       stateList: ['历史', '预约', '入场'],
@@ -138,7 +139,7 @@ export default {
         status: undefined,
         linkman: undefined,
         linkmanPhone: undefined,
-        dateRange: [new Date(new Date().getFullYear(), new Date().getMonth(), 1).toLocaleDateString().replace(/\//g, '-'), new Date(new Date().getFullYear(), new Date().getMonth()+1, 0).toLocaleDateString().replace(/\//g, '-')]
+        dateRange: [_this.parseTime(new Date(new Date().getFullYear(), new Date().getMonth(), 1).getTime(), '{y}-{m}-{d}'), _this.parseTime(new Date(new Date().getFullYear(), new Date().getMonth()+1, 0), '{y}-{m}-{d}')]
       },
       lists: [],
       // 分页

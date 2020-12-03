@@ -223,11 +223,13 @@ export default {
       this.dialogLayout = true
     },
     handleUpdate(item) {
-      this.resetForm("dialog")
-      this.dialog = Object.assign({}, JSON.parse(JSON.stringify(item)))
-      this.dialog.password = undefined
       this.isAdd = false
       this.dialogLayout = true
+      this.resetForm("dialog")
+      this.$nextTick(() => {
+        this.dialog = Object.assign({}, JSON.parse(JSON.stringify(item)))
+        this.dialog.password = undefined
+      })
     },
     handleUpdateState({ account, status }) {
       if (!+status) {
