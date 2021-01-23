@@ -210,10 +210,10 @@ export default {
       rules: {
         username: [{ required: true, message: '请输入会员名称', trigger: 'blur' }],
         account: [{ required: true, message: '请输入会员账号', trigger: 'blur' }],
-        phone: [
-          { required: true, message: '请输入手机号', trigger: 'blur' },
-          { pattern: /^1[3|4|5|8][0-9]\d{8}$/,  message: '请正确输入手机号', trigger: 'blur' }
-        ],
+        // phone: [
+        //   { required: true, message: '请输入手机号', trigger: 'blur' },
+        //   { pattern: /^1[3|4|5|8][0-9]\d{8}$/,  message: '请正确输入手机号', trigger: 'blur' }
+        // ],
         // department: [{ required: true, message: '请输入部门', trigger: 'blur' }],
         // position: [{ required: true, message: '请输入职位', trigger: 'blur' }],
         // company: [{ required: true, message: '请输入公司名称', trigger: 'blur' }]
